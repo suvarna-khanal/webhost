@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Dashboard</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+    th {
+      background-color: #333;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Stock Dashboard</h1>
+  <table id="stockTable">
+    <thead>
+      <tr>
+        <th>Stock Name</th>
+        <th>Shares Held</th>
+        <th>Buying Price (₹)</th>
+        <th>Current Value (₹)</th>
+        <th>Buying P/E</th>
+        <th>Current P/E</th>
+        <th>Yield on Cost (%)</th>
+        <th>Dividend Yield (%)</th>
+        <th>Capital Recovered via Dividend (₹)</th>
+      </tr>
+    </thead>
+    <tbody id="stockBody">
+    </tbody>
+  </table>
+
+  <script>
+    const stockData = {
+      name: "Infosys",
+      sharesHeld: 100,
+      buyingPrice: 1300, // per share
+      totalDividendReceived: 16000 // in ₹
+    };
+
+    async function fetchInfosysData() {
+      // Dummy data as placeholder
+      const currentPrice = 1450;
+      const eps = 65;
+      const dividend = 33;
+
+      const currentValue = stockData.sharesHeld * currentPrice;
+      const buyingPE = (stockData.buyingPrice / eps).toFixed(2);
+      const currentPE = (currentPrice / eps).toFixed(2);
+      const yieldOnCost = ((dividend / stockData.buyingPrice) * 100).toFixed(2);
+      const dividendYield = ((dividend / currentPrice) * 100).toFixed(2);
+
+      const row = `
+        <tr>
+          <td>${stockData.name}</td>
+          <td>${stockData.sharesHeld}</td>
+          <td>${stockData.buyingPrice}</td>
+          <td>${currentValue.toFixed(2)}</td>
+          <td>${buyingPE}</td>
+          <td>${currentPE}</td>
+          <td>${yieldOnCost}</td>
+          <td>${dividendYield}</td>
+          <td>${stockData.totalDividendReceived}</td>
+        </tr>
+      `;
+
+      document.getElementById("stockBody").innerHTML = row;
+    }
+
+    fetchInfosysData();
+  </script>
+</body>
+</html>
