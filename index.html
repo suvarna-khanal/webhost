@@ -1,90 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stock Dashboard</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Investment Criteria</title>
   <style>
     body {
-      font-family: sans-serif;
-      padding: 20px;
-      background: #f4f4f4;
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    h1, h2 {
+      color: #2c3e50;
     }
-    th, td {
-      padding: 12px;
-      border: 1px solid #ddd;
-      text-align: center;
+    ul {
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
     }
-    th {
-      background-color: #333;
-      color: white;
+    li {
+      margin-bottom: 0.5rem;
+    }
+    section {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
     }
   </style>
 </head>
 <body>
-  <h1>My Stock Dashboard</h1>
-  <table id="stockTable">
-    <thead>
-      <tr>
-        <th>Stock Name</th>
-        <th>Shares Held</th>
-        <th>Buying Price (₹)</th>
-        <th>Current Value (₹)</th>
-        <th>Buying P/E</th>
-        <th>Current P/E</th>
-        <th>Yield on Cost (%)</th>
-        <th>Dividend Yield (%)</th>
-        <th>Capital Recovered via Dividend (₹)</th>
-      </tr>
-    </thead>
-    <tbody id="stockBody">
-    </tbody>
-  </table>
 
-  <script>
-    const stockData = {
-      name: "Infosys",
-      sharesHeld: 100,
-      buyingPrice: 1300, // per share
-      totalDividendReceived: 16000 // in ₹
-    };
+  <h1>Investment Checklist</h1>
 
-    async function fetchInfosysData() {
-      // Dummy data as placeholder
-      const currentPrice = 1450;
-      const eps = 65;
-      const dividend = 33;
+  <section>
+    <h2>Chowder Rule</h2>
+    <p><strong>Formula:</strong> Dividend Yield + 5-Year Dividend Growth Rate ≥ 12%</p>
+    <ul>
+      <li>Dividend Yield</li>
+      <li>5-Year Dividend Growth Rate</li>
+    </ul>
+  </section>
 
-      const currentValue = stockData.sharesHeld * currentPrice;
-      const buyingPE = (stockData.buyingPrice / eps).toFixed(2);
-      const currentPE = (currentPrice / eps).toFixed(2);
-      const yieldOnCost = ((dividend / stockData.buyingPrice) * 100).toFixed(2);
-      const dividendYield = ((dividend / currentPrice) * 100).toFixed(2);
+  <section>
+    <h2>Fundamentals</h2>
+    <ul>
+      <li>PE (sector wise)</li>
+      <li>Operating Profit Growth Rate</li>
+      <li>EPS Growth Rate</li>
+      <li>PEG Value</li>
+      <li>Book Value</li>
+      <li>Planned CAPEX, investments</li>
+      <li>Sustained growth in ROE and ROCE(this guarantees management is good and company is doing something unique)</li>
+    </ul>
+  </section>
 
-      const row = `
-        <tr>
-          <td>${stockData.name}</td>
-          <td>${stockData.sharesHeld}</td>
-          <td>${stockData.buyingPrice}</td>
-          <td>${currentValue.toFixed(2)}</td>
-          <td>${buyingPE}</td>
-          <td>${currentPE}</td>
-          <td>${yieldOnCost}</td>
-          <td>${dividendYield}</td>
-          <td>${stockData.totalDividendReceived}</td>
-        </tr>
-      `;
+  <section>
+    <h2>Company Type</h2>
+    <ul>
+      <li>Growth</li>
+      <li>Dividend</li>
+      <li>PSU</li>
+      <li>Compounders</li>
+      <li>Potential Multibaggers</li>
+    </ul>
+  </section>
 
-      document.getElementById("stockBody").innerHTML = row;
-    }
-
-    fetchInfosysData();
-  </script>
 </body>
 </html>
+
